@@ -1,0 +1,15 @@
+<h1>Show User</h1>
+
+<ul>
+
+  <li>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </li>
+
+  <li>
+    <strong>Password:</strong>
+    <%= @user.hashed_password %>
+  </li>
+
+</ul>

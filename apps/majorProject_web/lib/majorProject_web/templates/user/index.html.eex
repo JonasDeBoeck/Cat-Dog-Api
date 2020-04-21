@@ -1,0 +1,21 @@
+<p>Welcome back <%= @user.username %>!</p>
+<p>You are <%= @user.role %></p>
+<h1>Listing Animals</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date Of Birth</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for animal <- @user.animals do %>
+    <tr>
+      <td><%= animal.name %></td>
+      <td><%= animal.date_of_birth %></td>
+      <td><%= animal.type %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
