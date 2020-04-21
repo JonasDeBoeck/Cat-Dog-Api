@@ -75,6 +75,17 @@ defmodule MajorProject.UserContext do
     |> Repo.update()
   end
 
+  def update_password(%User{} = user, attrs) do
+    user
+    |> User.change_password(attrs)
+    |> Repo.update()
+  end
+
+  def update_username(%User{} = user, attrs) do
+    user
+    |> User.change_username(attrs)
+    |> Repo.update()
+  end
   @doc """
   Deletes a user.
 
@@ -105,6 +116,10 @@ defmodule MajorProject.UserContext do
   end
 
   def get_user(id), do: Repo.get(User, id)
+
+  def password_check(user, plain_text_password) do
+    Pbkdf2.verify_pass(plain_text_password, user.hashed_password)
+  end
 
   def authenticate_user(username, plain_text_password) do
     case Repo.get_by(User, username: username) do

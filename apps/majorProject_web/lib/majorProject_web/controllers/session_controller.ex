@@ -24,7 +24,7 @@ defmodule MajorProjectWeb.SessionController do
     def logout(conn, _) do
       conn
       |> Guardian.Plug.sign_out()
-      |> redirect(to: "/login")
+      |> redirect(to: "/")
     end
   
     defp login_reply({:ok, user}, conn) do

@@ -26,6 +26,22 @@ defmodule MajorProject.UserContext.User do
     |> put_password_hash()
   end
 
+  @doc false
+  def change_username(user, attrs) do
+    user
+    |> cast(attrs, [:username])
+    |> unique_constraint(:username)
+    |> validate_required([:username])
+  end
+
+    @doc false
+    def change_password(user, attrs) do
+      user
+      |> cast(attrs, [:password])
+      |> validate_required([:password])
+      |> put_password_hash()
+    end
+
   defp put_password_hash(
     %Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset
   ) do

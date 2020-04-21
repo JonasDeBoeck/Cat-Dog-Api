@@ -22,6 +22,54 @@ defmodule MajorProjectWeb.UserController do
     render(conn, "show.html", user: user)
   end
 
+  def edit_password(conn, _params) do
+    user = Guardian.Plug.current_resource(conn)
+    changeset = UserContext.change_user(user)
+    render(conn, "edit_password.html", user: user, changeset: changeset)
+  end
+
+  def update_password(conn, %{"user" => %{"password" => password, "oldPassword" => oldPassword, "verifyPassword" => verifyPassword}}) do
+    user = Guardian.Plug.current_resource(conn)
+    changeset = UserContext.change_user(user)
+    if password == verifyPassword do
+      if UserContext.password_check(user, oldPassword) do
+        case UserContext.update_password(user, %{"password" => password}) do
+          {:ok, user} ->
+            conn
+            |> put_flash(:info, "User updated successfully.")
+            |> redirect(to: Routes.user_path(conn, :profile))
+    
+          {:error, %Ecto.Changeset{} = changeset} ->
+            render(conn, "edit_password.html", user: user, changeset: changeset)
+        end
+      else
+        render(conn, "edit_password.html", user: user, changeset: changeset)
+      end
+   else
+      render(conn, "edit_password.html", user: user, changeset: changeset)
+    end
+  end
+
+  def edit_username(conn, _params) do
+    user = Guardian.Plug.current_resource(conn)
+    changeset = UserContext.change_user(user)
+    render(conn, "edit_username.html", user: user, changeset: changeset)
+  end
+
+  def update_username(conn, %{"user" => %{"username" => username}}) do
+    user = Guardian.Plug.current_resource(conn)
+
+    case UserContext.update_username(user, %{"username" => username}) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "User updated successfully.")
+        |> redirect(to: Routes.user_path(conn, :profile))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "edit_username.html", user: user, changeset: changeset)
+    end
+  end
+
   def new(conn, _params) do
     changeset = UserContext.change_user(%User{})
     roles = UserContext.get_acceptable_roles()

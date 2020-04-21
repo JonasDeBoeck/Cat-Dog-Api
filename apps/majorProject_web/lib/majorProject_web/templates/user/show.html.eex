@@ -1,15 +1,7 @@
 <h1>Show User</h1>
-
-<ul>
-
-  <li>
+  <p>
     <strong>Username:</strong>
     <%= @user.username %>
-  </li>
-
-  <li>
-    <strong>Password:</strong>
-    <%= @user.hashed_password %>
-  </li>
-
-</ul>
+  </p>
+  <a href="/editUsername">Edit Username</a>
+  <a href="/editPassword">Change Password</a>
