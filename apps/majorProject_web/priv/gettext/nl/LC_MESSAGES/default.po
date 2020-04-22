@@ -1,0 +1,130 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: nl\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/index.html.eex:17
+msgid "Date Of Birth"
+msgstr "Geboortedatum"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/index.html.eex:8
+msgid "Listing Animals"
+msgstr "Lijst van dieren"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/index.html.eex:14
+msgid "Name"
+msgstr "Naam"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/index.html.eex:20
+msgid "Type"
+msgstr "Type"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/index.html.eex:2
+msgid "Welcome back %{user}"
+msgstr "Welkom %{user}"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/index.html.eex:5
+msgid "You are %{role}"
+msgstr "Je bent %{role}"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit_password.html.eex:30
+#: lib/majorProject_web/templates/user/edit_username.html.eex:20 lib/majorProject_web/templates/user/new.html.eex:6
+msgid "Back"
+msgstr "Terug"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/show.html.eex:14
+msgid "Change Password"
+msgstr "Verander wachtwoord"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit_password.html.eex:2
+msgid "Edit Password"
+msgstr "Wijzig wachtwoord"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit_username.html.eex:2
+#: lib/majorProject_web/templates/user/show.html.eex:11
+msgid "Edit Username"
+msgstr "Wijzig gebruikersnaam"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/users.html.eex:2
+msgid "Listing Users"
+msgstr "Lijst van users"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/users.html.eex:12
+msgid "Password"
+msgstr "Wachtwoord"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/users.html.eex:9
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/show.html.eex:6
+msgid "Username:"
+msgstr "Gebruikersnaam:"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/show.html.eex:2
+msgid "Show User"
+msgstr "Profiel"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit.html.eex:2
+msgid "Edit User"
+msgstr "Wijzig gebruikersnaam"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit_password.html.eex:9
+#: lib/majorProject_web/templates/user/edit_username.html.eex:8 lib/majorProject_web/templates/user/form.html.eex:4
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr "Oeps, er is iets misgegaan! Kijk aub. naar de errors onderaan"
+
+#, elixir-format
+#: lib/majorProject_web/templates/layout/app.html.eex:40
+msgid "Dutch"
+msgstr "Nederlands"
+
+#, elixir-format
+#: lib/majorProject_web/templates/layout/app.html.eex:39
+msgid "English"
+msgstr "Engels"
+
+#, elixir-format
+#: lib/majorProject_web/templates/layout/app.html.eex:28
+msgid "Log Out"
+msgstr "Log Uit"
+
+#, elixir-format
+#: lib/majorProject_web/templates/layout/app.html.eex:23
+msgid "My Profile"
+msgstr "Mijn Profiel"
+
+#, elixir-format
+#: lib/majorProject_web/templates/layout/app.html.eex:18
+msgid "Overview"
+msgstr "Overzicht"
+
+#, elixir-format
+#: lib/majorProject_web/templates/layout/app.html.eex:33
+msgid "User Management"
+msgstr "Gebruikersbeheer"

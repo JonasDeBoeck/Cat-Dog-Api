@@ -1,12 +1,24 @@
-<p>Welcome back <%= @user.username %>!</p>
-<p>You are <%= @user.role %></p>
-<h1>Listing Animals</h1>
+<p>
+  <%= gettext "Welcome back %{user}", user:  @user.username %>
+</p>
+<p>
+  <%= gettext "You are %{role}", role:  @user.role %>
+</p>
+<h1>
+  <%= gettext "Listing Animals" %>
+</h1>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Date Of Birth</th>
-      <th>Type</th>
+      <th>
+        <%= gettext "Name" %>
+      </th>
+      <th>
+        <%= gettext "Date Of Birth" %>
+      </th>
+      <th>
+        <%= gettext "Type" %>
+      </th>
     </tr>
   </thead>
   <tbody>

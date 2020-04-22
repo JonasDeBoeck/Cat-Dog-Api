@@ -1,10 +1,16 @@
-<h1>Listing Users</h1>
+<h1>
+  <%= gettext "Listing Users" %>
+</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Username</th>
-      <th>Password</th>
+      <th>
+        <%= gettext "Username" %>
+      </th>
+      <th>
+        <%= gettext "Password" %>
+      </th>
       <th></th>
     </tr>
   </thead>
@@ -14,8 +20,8 @@
       <td><%= user.username %></td>
       <td><%= user.hashed_password %></td>
       <td>
-        <span><%= link "Edit", to: Routes.user_path(@conn, :edit, user) %></span>
-        <span><%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link gettext("Edit"), to: Routes.user_path(@conn, :edit, user) %></span>
+        <span><%= link gettext("Delete"), to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>

@@ -1,7 +1,15 @@
-<h1>Show User</h1>
+<h1>
+  <%= gettext "Show User" %>
+</h1>
   <p>
-    <strong>Username:</strong>
+    <strong>
+      <%= gettext "Username:" %>
+    </strong>
     <%= @user.username %>
   </p>
-  <a href="/editUsername">Edit Username</a>
-  <a href="/editPassword">Change Password</a>
+  <a href="/editUsername">
+    <%= gettext "Edit Username" %>
+  </a>
+  <a href="/editPassword">
+    <%= gettext "Change Password" %>
+  </a>

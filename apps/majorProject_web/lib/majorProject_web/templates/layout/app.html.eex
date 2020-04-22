@@ -13,15 +13,32 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="<%= Routes.user_path(@conn, :index) %>">Overview</a></li>
-            <li><a href="<%= Routes.user_path(@conn, :profile) %>">My profile</a></li>
-            <li><a href="<%= Routes.session_path(@conn, :logout) %>">Log Out</a></li>
-            <li><a href="/admin/users">User Management</a></li>
+            <li>
+              <a href="<%= Routes.user_path(@conn, :index) %>">
+                <%= gettext "Overview" %>
+              </a>
+            </li>
+            <li>
+              <a href="<%= Routes.user_path(@conn, :profile) %>">
+                <%= gettext "My Profile" %>
+              </a>
+            </li>
+            <li>
+              <a href="<%= Routes.session_path(@conn, :logout) %>">
+                <%= gettext "Log Out" %>
+              </a>
+            </li>
+            <li>
+              <a href="/admin/users">
+                <%= gettext "User Management" %>
+              </a>
+            </li>
           </ul>
         </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
+        <ul>
+          <li><%= new_locale @conn, :en, gettext("English") %></li>
+          <li><%= new_locale @conn, :nl, gettext("Dutch") %></li>
+        </ul>
       </section>
     </header>
     <main role="main" class="container">

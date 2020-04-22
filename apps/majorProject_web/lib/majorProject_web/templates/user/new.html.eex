@@ -2,4 +2,6 @@
 
 <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
 
-<a href="/">Back</a>
+<a href="/">
+    <%= gettext "Back" %>
+</a>

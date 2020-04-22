@@ -29,6 +29,10 @@ config :majorProject_web, MajorProjectWeb.Endpoint,
   pubsub: [name: MajorProjectWeb.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [signing_salt: "r/Ow6ssJ"]
 
+config :majorProject, MajorProjectWeb.GetText,
+  locales: ~w(en nl),
+  default_locale: "en"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
