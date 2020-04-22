@@ -39,6 +39,8 @@ defmodule MajorProjectWeb.Router do
     get "/", SessionController, :new
     post "/login", SessionController, :login
     get "/logout", SessionController, :logout
+    get "/register", UserController, :new
+    post "/register", UserController, :create
   end
 
   scope "/", MajorProjectWeb do
@@ -55,6 +57,9 @@ defmodule MajorProjectWeb.Router do
   scope "/admin", MajorProjectWeb do
     pipe_through [:browser, :majorProject, :ensure_auth, :auth, :allowed_for_admins]
     get "/users", UserController, :users
+    get "/edit/:user_id", UserController, :edit
+    put "/edit/:user_id", UserController, :update
+    delete "/users/:user_id", UserController, :delete
   end
 
   scope "/api", MajorProjectWeb do

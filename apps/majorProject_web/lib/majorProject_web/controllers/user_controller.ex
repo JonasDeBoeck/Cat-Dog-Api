@@ -72,49 +72,54 @@ defmodule MajorProjectWeb.UserController do
 
   def new(conn, _params) do
     changeset = UserContext.change_user(%User{})
-    roles = UserContext.get_acceptable_roles()
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"user" => user_params}) do
-    case UserContext.create_user(user_params) do
-      {:ok, user} ->
-        conn
-        |> put_flash(:info, "User created successfully.")
-        |> redirect(to: Routes.user_path(conn, :show, user))
+  def create(conn, %{"user" => %{"password" => password, "confirmPassword" => confirmPassword, "username" => username}}) do
+    changeset = UserContext.change_user(%User{})
+    if (password == confirmPassword) do
+      user_params = %{"password" => password, "username" => username, "role" => "User"}
+      case UserContext.create_user(user_params) do
+        {:ok, user} ->
+          conn
+          |> put_flash(:info, "User created successfully.")
+          |> redirect(to: Routes.session_path(conn, :new))
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        {:error, %Ecto.Changeset{} = changeset} ->
+          render(conn, "new.html", changeset: changeset)
+      end
+    else
+      render(conn, "new.html", changeset: changeset)
     end
   end
 
-  def show(conn, %{"id" => id}) do
+  def show(conn, %{"user_id" => id}) do
     user = UserContext.get_user!(id)
     render(conn, "show.html", user: user)
   end
 
-  def edit(conn, %{"id" => id}) do
+  def edit(conn, %{"user_id" => id}) do
     user = UserContext.get_user!(id)
     changeset = UserContext.change_user(user)
     roles = UserContext.get_acceptable_roles()
     render(conn, "edit.html", user: user, changeset: changeset, acceptable_roles: roles)
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
+  def update(conn, %{"user_id" => id, "user" => user_params}) do
     user = UserContext.get_user!(id)
 
     case UserContext.update_user(user, user_params) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: Routes.user_path(conn, :show, user))
+        |> redirect(to: Routes.user_path(conn, :users))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"user_id" => id}) do
     user = UserContext.get_user!(id)
     {:ok, _user} = UserContext.delete_user(user)
 
