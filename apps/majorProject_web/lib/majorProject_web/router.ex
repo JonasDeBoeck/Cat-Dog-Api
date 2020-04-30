@@ -61,6 +61,8 @@ defmodule MajorProjectWeb.Router do
     get "/edit/:user_id", UserController, :edit
     put "/edit/:user_id", UserController, :update
     delete "/users/:user_id", UserController, :delete
+    get "/register", UserController, :register
+    post "/register", UserController, :register_user
   end
 
   scope "/api", MajorProjectWeb do

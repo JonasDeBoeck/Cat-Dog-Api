@@ -70,6 +70,34 @@ defmodule MajorProjectWeb.UserController do
     end
   end
 
+  def register(conn, _params) do
+    changeset = UserContext.change_user(%User{})
+    roles = UserContext.get_acceptable_roles()
+    render(conn, "register.html", changeset: changeset, acceptable_roles: roles)
+  end
+
+  def register_user(conn, %{"user" => %{"password" => password, "confirmPassword" => confirmPassword, "username" => username, "role" => role}}) do
+    changeset = UserContext.change_user(%User{})
+    if (password == confirmPassword) do
+      user_params = %{"password" => password, "username" => username, "role" => role}
+      IO.puts("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
+      IO.inspect(user_params)
+      case UserContext.create_user(user_params) do
+        {:ok, user} ->
+          conn
+          |> put_flash(:info, "User created successfully.")
+          |> redirect(to: Routes.user_path(conn, :users))
+
+        {:error, %Ecto.Changeset{} = changeset} ->
+          roles = UserContext.get_acceptable_roles()
+          render(conn, "register.html", changeset: changeset, acceptable_roles: roles)
+      end
+    else
+      roles = UserContext.get_acceptable_roles()
+      render(conn, "register.html", changeset: changeset, acceptable_roles: roles)
+    end
+  end
+
   def new(conn, _params) do
     changeset = UserContext.change_user(%User{})
     render(conn, "new.html", changeset: changeset)

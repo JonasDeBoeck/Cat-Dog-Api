@@ -4,6 +4,9 @@
 <p>
   <%= gettext "You are %{role}", role:  @user.role %>
 </p>
+<p id="clock">
+
+</p>
 <h1>
   <%= gettext "Listing Animals" %>
 </h1>

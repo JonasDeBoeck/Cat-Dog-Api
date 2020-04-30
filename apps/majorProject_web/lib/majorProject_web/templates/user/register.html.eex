@@ -1,0 +1,34 @@
+<h1>
+    <%= gettext "Register a new user" %>
+  </h1>
+  
+  <%= form_for @changeset, Routes.user_path(@conn, :register_user), fn f -> %>
+  <%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p><%= gettext "Oops, something went wrong! Please check the errors below." %></p>
+  </div>
+  <% end %>
+  
+  <%= label f, :Username %>
+  <%= text_input f, :username %>
+  <%= error_tag f, :username %>
+
+  <%= label f, :Password %>
+  <%= password_input f, :password %>
+  <%= error_tag f, :password %>
+
+  <%= label f, :"Confirm Password" %>
+  <%= password_input f, :confirmPassword %>
+  <%= error_tag f, :confirmPassword %>
+
+  <%= label f, :role %>
+  <%= select f, :role, @acceptable_roles %>
+  <%= error_tag f, :role %>
+  
+  <div>
+    <%= submit "Register user" %>
+  </div>
+  <a href="/admin/users">
+    <%= gettext "Back" %>
+  </a>
+  <% end %>
