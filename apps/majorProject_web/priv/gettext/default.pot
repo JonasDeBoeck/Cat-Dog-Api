@@ -144,3 +144,18 @@ msgstr ""
 #: lib/majorProject_web/templates/user/register.html.eex:2
 msgid "Register a new user"
 msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/session/new.html.eex:1
+msgid "Login Page"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/session/new.html.eex:21
+msgid "Make a new account"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/layout/app.html.eex:42
+msgid "Project IP Major of Jonas De Boeck"
+msgstr ""

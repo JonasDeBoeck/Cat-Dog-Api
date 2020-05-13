@@ -1,4 +1,4 @@
-<h1>Login Page</h2>
+<h1><%= gettext "Login Page" %></h2>
 
 <%= form_for @changeset, @action, fn f -> %>
 
@@ -18,5 +18,5 @@
     <%= submit "Submit", class: "btn btn-primary" %>
 </div>
 
-<a href="/register">Make a new account</a>
+<a href="/register"> <%= gettext "Make a new account" %></a>
 <% end %>

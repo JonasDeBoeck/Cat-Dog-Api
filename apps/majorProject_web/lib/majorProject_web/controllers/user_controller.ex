@@ -38,7 +38,7 @@ defmodule MajorProjectWeb.UserController do
             conn
             |> put_flash(:info, "User updated successfully.")
             |> redirect(to: Routes.user_path(conn, :profile))
-    
+
           {:error, %Ecto.Changeset{} = changeset} ->
             render(conn, "edit_password.html", user: user, changeset: changeset)
         end
@@ -80,8 +80,6 @@ defmodule MajorProjectWeb.UserController do
     changeset = UserContext.change_user(%User{})
     if (password == confirmPassword) do
       user_params = %{"password" => password, "username" => username, "role" => role}
-      IO.puts("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
-      IO.inspect(user_params)
       case UserContext.create_user(user_params) do
         {:ok, user} ->
           conn
@@ -153,6 +151,6 @@ defmodule MajorProjectWeb.UserController do
 
     conn
     |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: Routes.user_path(conn, :index))
+    |> redirect(to: Routes.user_path(conn, :users))
   end
 end
