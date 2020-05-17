@@ -3,6 +3,7 @@ defmodule MajorProject.UserContext.User do
   import Ecto.Changeset
 
   alias MajorProject.AnimalContext.Animal
+  alias MajorProject.ApiContext.Api
 
   @acceptable_roles ["Admin", "User"]
 
@@ -12,6 +13,7 @@ defmodule MajorProject.UserContext.User do
     field :role, :string
     field :username, :string
     has_many :animals, Animal
+    has_many :api, Api
   end
 
   def get_acceptable_roles, do: @acceptable_roles

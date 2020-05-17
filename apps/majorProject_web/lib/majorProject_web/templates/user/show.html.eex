@@ -13,3 +13,40 @@
   <a href="/editPassword">
     <%= gettext "Change Password" %>
   </a>
+  <h1>
+    <%= gettext "Api keys:" %>
+  </h1>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <%= gettext "Name" %>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for key <- @user.api do %>
+      <tr>
+        <td><%= key.name %></td>
+        <td><%= link gettext("Show"), to: Routes.user_path(@conn, :show_key, key) %></td>
+        <td><%= link gettext("Delete"), to: Routes.user_path(@conn, :delete_key, key), method: :delete, data: [confirm: "Are you sure?"] %></td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+
+  <%= form_for @changeset, Routes.user_path(@conn, :create_api), fn f -> %>
+
+  <%= label f, :Name, gettext("Name") %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <div>
+    <%= submit gettext("Create key") %>
+  </div>
+
+  <% end %>

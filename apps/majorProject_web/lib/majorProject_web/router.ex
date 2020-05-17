@@ -53,6 +53,9 @@ defmodule MajorProjectWeb.Router do
     put "/editUsername", UserController, :update_username
     get "/editPassword", UserController, :edit_password
     put "/editPassword", UserController, :update_password
+    post "/createKey", UserController, :create_api
+    get "/key/:api_id", UserController, :show_key
+    delete "/key/:api_id", UserController, :delete_key
   end
 
   scope "/admin", MajorProjectWeb do

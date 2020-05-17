@@ -5,19 +5,19 @@
     </div>
   <% end %>
 
-  <%= label f, :Username %>
+  <%= label f, :Username, gettext("Username") %>
   <%= text_input f, :username %>
   <%= error_tag f, :username %>
 
-  <%= label f, :Password %>
+  <%= label f, :Password, gettext("Password") %>
   <%= password_input f, :password %>
   <%= error_tag f, :password %>
 
-  <%= label f, :"Confirm Password" %>
+  <%= label f, :"Confirm Password", gettext("Confirm password") %>
   <%= password_input f, :confirmPassword %>
   <%= error_tag f, :confirmPassword %>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit gettext("Save") %>
   </div>
 <% end %>

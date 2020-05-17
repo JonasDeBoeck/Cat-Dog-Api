@@ -22,6 +22,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/majorProject_web/templates/user/index.html.eex:17
+#: lib/majorProject_web/templates/user/show.html.eex:23 lib/majorProject_web/templates/user/show.html.eex:44
 msgid "Name"
 msgstr ""
 
@@ -48,6 +49,7 @@ msgid "Back"
 msgstr ""
 
 #, elixir-format
+#: lib/majorProject_web/templates/user/edit_password.html.eex:27
 #: lib/majorProject_web/templates/user/show.html.eex:14
 msgid "Change Password"
 msgstr ""
@@ -69,12 +71,16 @@ msgid "Listing Users"
 msgstr ""
 
 #, elixir-format
+#: lib/majorProject_web/templates/session/new.html.eex:12
+#: lib/majorProject_web/templates/user/form.html.eex:12 lib/majorProject_web/templates/user/register.html.eex:16
 #: lib/majorProject_web/templates/user/users.html.eex:12
 msgid "Password"
 msgstr ""
 
 #, elixir-format
-#: lib/majorProject_web/templates/user/users.html.eex:9
+#: lib/majorProject_web/templates/session/new.html.eex:6
+#: lib/majorProject_web/templates/user/edit_username.html.eex:12 lib/majorProject_web/templates/user/form.html.eex:8
+#: lib/majorProject_web/templates/user/register.html.eex:12 lib/majorProject_web/templates/user/users.html.eex:9
 msgid "Username"
 msgstr ""
 
@@ -126,6 +132,7 @@ msgid "User Management"
 msgstr ""
 
 #, elixir-format
+#: lib/majorProject_web/templates/user/show.html.eex:36
 #: lib/majorProject_web/templates/user/users.html.eex:24
 msgid "Delete"
 msgstr ""
@@ -142,6 +149,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/majorProject_web/templates/user/register.html.eex:2
+#: lib/majorProject_web/templates/user/users.html.eex:30
 msgid "Register a new user"
 msgstr ""
 
@@ -156,6 +164,82 @@ msgid "Make a new account"
 msgstr ""
 
 #, elixir-format
+#: lib/majorProject_web/templates/user/key.html.eex:3
+msgid "%{key}:"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/show.html.eex:17
+msgid "Api keys:"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/show.html.eex:35
+msgid "Show"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/show.html.eex:49
+msgid "Create key"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit_username.html.eex:17
+msgid "Change Username"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/form.html.eex:16
+#: lib/majorProject_web/templates/user/register.html.eex:20
+msgid "Confirm password"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit_password.html.eex:18
+msgid "New password"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit_password.html.eex:14
+msgid "Old password"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/register.html.eex:29
+msgid "Register user"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/register.html.eex:24
+msgid "Role"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/form.html.eex:21
+msgid "Save"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/session/new.html.eex:18
+msgid "Submit"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit_password.html.eex:22
+msgid "Verify password"
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:174
+msgid "You can't delete other people's api keys."
+msgstr ""
+
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:201
+msgid "You can't see other people's api keys."
+msgstr ""
+
+#, elixir-format
 #: lib/majorProject_web/templates/layout/app.html.eex:42
-msgid "Project IP Major of Jonas De Boeck"
+msgid "IP major project of Jonas De Boeck"
 msgstr ""

@@ -39,7 +39,7 @@
           <li><%= new_locale @conn, :en, gettext("English") %></li>
           <li><%= new_locale @conn, :nl, gettext("Dutch") %></li>
         </ul>
-        <p><%= gettext "Project IP Major of Jonas De Boeck" %></p>
+        <p><%= gettext("IP major project of Jonas De Boeck") %></p>
       </section>
     </header>
     <main role="main" class="container">
@@ -47,6 +47,5 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

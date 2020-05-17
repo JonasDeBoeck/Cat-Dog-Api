@@ -9,12 +9,12 @@
 </div>
 <% end %>
 
-<%= label f, :username %>
+<%= label f, :username, gettext("Username") %>
 <%= text_input f, :username %>
 <%= error_tag f, :username %>
 
 <div>
-  <%= submit "Change Username" %>
+  <%= submit gettext("Change Username") %>
 </div>
 <a href="/profile">
   <%= gettext "Back" %>

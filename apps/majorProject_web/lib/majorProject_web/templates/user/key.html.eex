@@ -1,0 +1,6 @@
+<p>
+    <strong>
+        <%= gettext "%{key}:", key: @key.name %>
+    </strong>
+    <%= @key.key %>
+</p>

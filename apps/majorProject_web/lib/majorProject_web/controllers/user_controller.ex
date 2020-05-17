@@ -5,6 +5,8 @@ defmodule MajorProjectWeb.UserController do
   alias MajorProject.UserContext.User
   alias MajorProject.AnimalContext
   alias MajorProject.AnimalContext.Animal
+  alias MajorProject.ApiContext
+  alias MajorProject.ApiContext.Api
 
   def index(conn, _params) do
     user =  Guardian.Plug.current_resource(conn)
@@ -19,7 +21,9 @@ defmodule MajorProjectWeb.UserController do
 
   def profile(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
-    render(conn, "show.html", user: user)
+    user_with_keys = ApiContext.load_api(user)
+    changeset = ApiContext.change_api(%Api{})
+    render(conn, "show.html", user: user_with_keys, changeset: changeset)
   end
 
   def edit_password(conn, _params) do
@@ -39,11 +43,13 @@ defmodule MajorProjectWeb.UserController do
             |> put_flash(:info, "User updated successfully.")
             |> redirect(to: Routes.user_path(conn, :profile))
 
-          {:error, %Ecto.Changeset{} = changeset} ->
-            render(conn, "edit_password.html", user: user, changeset: changeset)
+          {:error, %Ecto.Changeset{} = error} ->
+            render(conn, "edit_password.html", user: user, changeset: error)
         end
       else
-        render(conn, "edit_password.html", user: user, changeset: changeset)
+        updated_changeset = Ecto.Changeset.add_error(changeset, :oldPassword, "Old password doesn't match")
+        IO.inspect(updated_changeset)
+        render(conn, "edit_password.html", user: user, changeset: updated_changeset)
       end
    else
       render(conn, "edit_password.html", user: user, changeset: changeset)
@@ -66,6 +72,7 @@ defmodule MajorProjectWeb.UserController do
         |> redirect(to: Routes.user_path(conn, :profile))
 
       {:error, %Ecto.Changeset{} = changeset} ->
+        IO.inspect(changeset)
         render(conn, "edit_username.html", user: user, changeset: changeset)
     end
   end
@@ -151,6 +158,48 @@ defmodule MajorProjectWeb.UserController do
 
     conn
     |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: Routes.user_path(conn, :users))
+    |> redirect(to: Routes.user_path(conn, :index))
+  end
+
+  def delete_key(conn, %{"api_id" => id}) do
+    key = ApiContext.get_api!(id)
+    user = Guardian.Plug.current_resource(conn)
+    if key.user_id == user.id do
+      {:ok, _key} = ApiContext.delete_api(key)
+      conn
+      |> put_flash(:info, "Key deleted successfully.")
+      |> redirect(to: Routes.user_path(conn, :profile))
+    else
+      conn
+      |> put_flash(:error, gettext("You can't delete other people's api keys."))
+      |> redirect(to: Routes.user_path(conn, :profile))
+    end
+  end
+
+  def create_api(conn, %{"api" => %{"name" => name}}) do
+    user = Guardian.Plug.current_resource(conn)
+    user_with_keys = ApiContext.load_api(user)
+    key = ApiContext.random_string(64)
+    case ApiContext.create_api(%{"key" => key, "name" => name}, user) do
+      {:ok, key} ->
+        conn
+        |> put_flash(:info, "Key created successfully.")
+        |> redirect(to: Routes.user_path(conn, :profile))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "show.html", changeset: changeset, user: user_with_keys)
+    end
+  end
+
+  def show_key(conn, %{"api_id" => id}) do
+    key = ApiContext.get_api!(id)
+    user = Guardian.Plug.current_resource(conn)
+    if key.user_id == user.id do
+      render(conn, "key.html", key: key)
+    else
+      conn
+      |> put_flash(:error, gettext("You can't see other people's api keys."))
+      |> redirect(to: Routes.user_path(conn, :profile))
+    end
   end
 end

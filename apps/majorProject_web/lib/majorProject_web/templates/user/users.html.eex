@@ -27,4 +27,4 @@
 <% end %>
   </tbody>
 </table>
-<span><%= link "Register a new user", to: Routes.user_path(@conn, :register) %></span>
+<span><%= link gettext("Register a new user"), to: Routes.user_path(@conn, :register) %></span>
