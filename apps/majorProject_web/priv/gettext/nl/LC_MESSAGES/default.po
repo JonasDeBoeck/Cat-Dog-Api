@@ -141,7 +141,7 @@ msgstr "Verwijder"
 #, elixir-format
 #: lib/majorProject_web/templates/user/users.html.eex:23
 msgid "Edit"
-msgstr "Wijzig gebruikersnaam"
+msgstr "Aanpassen"
 
 #, elixir-format
 #: lib/majorProject_web/templates/layout/app.html.eex:23
@@ -231,12 +231,12 @@ msgid "Verify password"
 msgstr "Verifiëer wachtwoord"
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:174
+#: lib/majorProject_web/controllers/user_controller.ex:181
 msgid "You can't delete other people's api keys."
 msgstr "Je kan andere gebruikers hun api sleutels niet verwijderen."
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:201
+#: lib/majorProject_web/controllers/user_controller.ex:208
 msgid "You can't see other people's api keys."
 msgstr "Je kan andere mensen hun api sleutel niet zien."
 
@@ -244,3 +244,47 @@ msgstr "Je kan andere mensen hun api sleutel niet zien."
 #: lib/majorProject_web/templates/layout/app.html.eex:42
 msgid "IP major project of Jonas De Boeck"
 msgstr "IP major project van Jonas De Boeck"
+
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:50
+msgid "Old password doesn't match"
+msgstr "Het ingevulde wachtwoord komt niet overeen met het oud wachtwoord"
+
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:55
+#: lib/majorProject_web/controllers/user_controller.ex:56
+msgid "Passwords don't match"
+msgstr "Wachtwoorden komen niet overeen"
+
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:193
+msgid "Key created successfully."
+msgstr "Sleutel succesvol aangemaakt"
+
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:177
+msgid "Key deleted successfully."
+msgstr "Sleutel succesvol verwijdert"
+
+#, elixir-format, fuzzy
+#: lib/majorProject_web/controllers/user_controller.ex:106
+#: lib/majorProject_web/controllers/user_controller.ex:131
+msgid "Passwords didn't match"
+msgstr "Wachtwoorden komen niet overeen"
+
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:96
+#: lib/majorProject_web/controllers/user_controller.ex:123
+msgid "User created successfully."
+msgstr "Gebruiker succesvol aangemaakt"
+
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:167
+msgid "User deleted successfully."
+msgstr "Gebruiker succesvol verwijdert"
+
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:43
+#: lib/majorProject_web/controllers/user_controller.ex:74 lib/majorProject_web/controllers/user_controller.ex:154
+msgid "User updated successfully."
+msgstr "Gebruiker succesvol aangepast"

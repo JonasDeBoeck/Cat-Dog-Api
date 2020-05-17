@@ -40,19 +40,22 @@ defmodule MajorProjectWeb.UserController do
         case UserContext.update_password(user, %{"password" => password}) do
           {:ok, user} ->
             conn
-            |> put_flash(:info, "User updated successfully.")
+            |> put_flash(:info, gettext("User updated successfully."))
             |> redirect(to: Routes.user_path(conn, :profile))
 
           {:error, %Ecto.Changeset{} = error} ->
             render(conn, "edit_password.html", user: user, changeset: error)
         end
       else
-        updated_changeset = Ecto.Changeset.add_error(changeset, :oldPassword, "Old password doesn't match")
-        IO.inspect(updated_changeset)
-        render(conn, "edit_password.html", user: user, changeset: updated_changeset)
+        updated_changeset = Ecto.Changeset.add_error(changeset, :oldPassword, gettext("Old password doesn't match"))
+        updated_changeset = Ecto.Changeset.apply_action(updated_changeset, :update)
+        render(conn, "edit_password.html", user: user, changeset: elem(updated_changeset, 1))
       end
    else
-      render(conn, "edit_password.html", user: user, changeset: changeset)
+      updated_changeset = Ecto.Changeset.add_error(changeset, :newPassword, gettext("Passwords don't match"))
+      updated_changeset = Ecto.Changeset.add_error(updated_changeset, :verifyPassword, gettext("Passwords don't match"))
+      updated_changeset = Ecto.Changeset.apply_action(updated_changeset, :update)
+      render(conn, "edit_password.html", user: user, changeset: elem(updated_changeset, 1))
     end
   end
 
@@ -68,7 +71,7 @@ defmodule MajorProjectWeb.UserController do
     case UserContext.update_username(user, %{"username" => username}) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "User updated successfully.")
+        |> put_flash(:info, gettext("User updated successfully."))
         |> redirect(to: Routes.user_path(conn, :profile))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -90,7 +93,7 @@ defmodule MajorProjectWeb.UserController do
       case UserContext.create_user(user_params) do
         {:ok, user} ->
           conn
-          |> put_flash(:info, "User created successfully.")
+          |> put_flash(:info, gettext("User created successfully."))
           |> redirect(to: Routes.user_path(conn, :users))
 
         {:error, %Ecto.Changeset{} = changeset} ->
@@ -99,6 +102,8 @@ defmodule MajorProjectWeb.UserController do
       end
     else
       roles = UserContext.get_acceptable_roles()
+      conn
+      |> put_flash(:error, gettext("Passwords didn't match"))
       render(conn, "register.html", changeset: changeset, acceptable_roles: roles)
     end
   end
@@ -115,13 +120,15 @@ defmodule MajorProjectWeb.UserController do
       case UserContext.create_user(user_params) do
         {:ok, user} ->
           conn
-          |> put_flash(:info, "User created successfully.")
+          |> put_flash(:info, gettext("User created successfully."))
           |> redirect(to: Routes.session_path(conn, :new))
 
         {:error, %Ecto.Changeset{} = changeset} ->
           render(conn, "new.html", changeset: changeset)
       end
     else
+      conn
+      |> put_flash(:error, gettext("Passwords didn't match"))
       render(conn, "new.html", changeset: changeset)
     end
   end
@@ -144,7 +151,7 @@ defmodule MajorProjectWeb.UserController do
     case UserContext.update_user(user, user_params) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "User updated successfully.")
+        |> put_flash(:info, gettext("User updated successfully."))
         |> redirect(to: Routes.user_path(conn, :users))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -157,7 +164,7 @@ defmodule MajorProjectWeb.UserController do
     {:ok, _user} = UserContext.delete_user(user)
 
     conn
-    |> put_flash(:info, "User deleted successfully.")
+    |> put_flash(:info, gettext("User deleted successfully."))
     |> redirect(to: Routes.user_path(conn, :index))
   end
 
@@ -167,7 +174,7 @@ defmodule MajorProjectWeb.UserController do
     if key.user_id == user.id do
       {:ok, _key} = ApiContext.delete_api(key)
       conn
-      |> put_flash(:info, "Key deleted successfully.")
+      |> put_flash(:info, gettext("Key deleted successfully."))
       |> redirect(to: Routes.user_path(conn, :profile))
     else
       conn
@@ -183,7 +190,7 @@ defmodule MajorProjectWeb.UserController do
     case ApiContext.create_api(%{"key" => key, "name" => name}, user) do
       {:ok, key} ->
         conn
-        |> put_flash(:info, "Key created successfully.")
+        |> put_flash(:info, gettext("Key created successfully."))
         |> redirect(to: Routes.user_path(conn, :profile))
 
       {:error, %Ecto.Changeset{} = changeset} ->
