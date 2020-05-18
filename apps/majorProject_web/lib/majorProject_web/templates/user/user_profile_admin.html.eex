@@ -1,0 +1,22 @@
+<h1>
+    <%= gettext "Show User" %>
+  </h1>
+    <p>
+      <strong>
+        <%= gettext "Username:" %>
+      </strong>
+      <%= @user.username %>
+    </p>
+    <p>
+        <strong>
+            <%= gettext "Password:" %>
+        </strong>
+        <%= @user.hashed_password %>
+    </p>
+    <p>
+        <strong>
+            <%= gettext "Role:" %>
+        </strong>
+        <%= @user.role %>
+    </p>
+    

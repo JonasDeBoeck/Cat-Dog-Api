@@ -22,6 +22,7 @@
       <td>
         <span><%= link gettext("Edit"), to: Routes.user_path(@conn, :edit, user) %></span>
         <span><%= link gettext("Delete"), to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link gettext("Show"), to: Routes.user_path(@conn, :admin_profile, user) %></span>
       </td>
     </tr>
 <% end %>

@@ -26,7 +26,7 @@ defmodule MajorProjectWeb.AnimalController do
             conn
             |> put_status(:created)
             |> put_resp_header("location", Routes.user_animal_path(conn, :show, user_id, animal))
-            |> render("show.json", animal: animal)
+            |> render("details.json", animal: animal)
 
           {:error, _cs} ->
             conn
@@ -63,7 +63,7 @@ defmodule MajorProjectWeb.AnimalController do
         animal = AnimalContext.get_animal!(id)
         case AnimalContext.update_animal(animal, animal_params) do
           {:ok, %Animal{} = animal} ->
-            render(conn, "show.json", animal: animal)
+            render(conn, "details.json", animal: animal)
 
           {:error, _cs} ->
             conn

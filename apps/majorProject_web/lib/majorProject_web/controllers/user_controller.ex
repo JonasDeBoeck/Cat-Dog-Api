@@ -26,6 +26,11 @@ defmodule MajorProjectWeb.UserController do
     render(conn, "show.html", user: user_with_keys, changeset: changeset)
   end
 
+  def admin_profile(conn, %{"user_id" => user_id}) do
+    user = UserContext.get_user!(user_id)
+    render(conn, "user_profile_admin.html", user: user)
+  end
+
   def edit_password(conn, _params) do
     user = Guardian.Plug.current_resource(conn)
     changeset = UserContext.change_user(user)
@@ -104,7 +109,7 @@ defmodule MajorProjectWeb.UserController do
       roles = UserContext.get_acceptable_roles()
       conn
       |> put_flash(:error, gettext("Passwords didn't match"))
-      render(conn, "register.html", changeset: changeset, acceptable_roles: roles)
+      |> redirect(to: Routes.user_path(conn, :register))
     end
   end
 
@@ -121,7 +126,7 @@ defmodule MajorProjectWeb.UserController do
         {:ok, user} ->
           conn
           |> put_flash(:info, gettext("User created successfully."))
-          |> redirect(to: Routes.session_path(conn, :new))
+          |> redirect(to: Routes.user_path(conn, :users))
 
         {:error, %Ecto.Changeset{} = changeset} ->
           render(conn, "new.html", changeset: changeset)
@@ -129,7 +134,7 @@ defmodule MajorProjectWeb.UserController do
     else
       conn
       |> put_flash(:error, gettext("Passwords didn't match"))
-      render(conn, "new.html", changeset: changeset)
+      |> redirect(to: Routes.user_path(conn, :new))
     end
   end
 
@@ -145,18 +150,24 @@ defmodule MajorProjectWeb.UserController do
     render(conn, "edit.html", user: user, changeset: changeset, acceptable_roles: roles)
   end
 
-  def update(conn, %{"user_id" => id, "user" => user_params}) do
+  def update(conn, %{"user_id" => id, "user" => %{"password" => password, "confirmPassword" => confirmPassword, "username" => username, "role" => role}}) do
     user = UserContext.get_user!(id)
+    if password == confirmPassword do
+      user_params = %{"password" => password, "username" => username, "role" => role}
+      case UserContext.update_user(user, user_params) do
+        {:ok, user} ->
+          conn
+          |> put_flash(:info, gettext("User updated successfully."))
+          |> redirect(to: Routes.user_path(conn, :users))
 
-    case UserContext.update_user(user, user_params) do
-      {:ok, user} ->
-        conn
-        |> put_flash(:info, gettext("User updated successfully."))
-        |> redirect(to: Routes.user_path(conn, :users))
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", user: user, changeset: changeset)
+        {:error, %Ecto.Changeset{} = changeset} ->
+          render(conn, "edit.html", user: user, changeset: changeset)
     end
+  else
+    conn
+      |> put_flash(:info, gettext("Passwords don't match"))
+      |> redirect(to: Routes.user_path(conn, :edit))
+  end
   end
 
   def delete(conn, %{"user_id" => id}) do

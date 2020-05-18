@@ -43,9 +43,9 @@ msgid "You are %{role}"
 msgstr "Je bent %{role}"
 
 #, elixir-format
-#: lib/majorProject_web/templates/user/edit_password.html.eex:30
-#: lib/majorProject_web/templates/user/edit_username.html.eex:20 lib/majorProject_web/templates/user/new.html.eex:6
-#: lib/majorProject_web/templates/user/register.html.eex:32
+#: lib/majorProject_web/templates/user/edit.html.eex:32
+#: lib/majorProject_web/templates/user/edit_password.html.eex:30 lib/majorProject_web/templates/user/edit_username.html.eex:20
+#: lib/majorProject_web/templates/user/new.html.eex:6 lib/majorProject_web/templates/user/register.html.eex:32
 msgid "Back"
 msgstr "Terug"
 
@@ -73,37 +73,35 @@ msgstr "Lijst van users"
 
 #, elixir-format
 #: lib/majorProject_web/templates/session/new.html.eex:12
-#: lib/majorProject_web/templates/user/form.html.eex:12 lib/majorProject_web/templates/user/register.html.eex:16
-#: lib/majorProject_web/templates/user/users.html.eex:12
+#: lib/majorProject_web/templates/user/edit.html.eex:16 lib/majorProject_web/templates/user/form.html.eex:12
+#: lib/majorProject_web/templates/user/register.html.eex:16 lib/majorProject_web/templates/user/users.html.eex:12
 msgid "Password"
 msgstr "Wachtwoord"
 
 #, elixir-format
 #: lib/majorProject_web/templates/session/new.html.eex:6
-#: lib/majorProject_web/templates/user/edit_username.html.eex:12 lib/majorProject_web/templates/user/form.html.eex:8
-#: lib/majorProject_web/templates/user/register.html.eex:12 lib/majorProject_web/templates/user/users.html.eex:9
+#: lib/majorProject_web/templates/user/edit.html.eex:12 lib/majorProject_web/templates/user/edit_username.html.eex:12
+#: lib/majorProject_web/templates/user/form.html.eex:8 lib/majorProject_web/templates/user/register.html.eex:12
+#: lib/majorProject_web/templates/user/users.html.eex:9
 msgid "Username"
 msgstr "Gebruikersnaam"
 
 #, elixir-format
 #: lib/majorProject_web/templates/user/show.html.eex:6
+#: lib/majorProject_web/templates/user/user_profile_admin.html.eex:6
 msgid "Username:"
 msgstr "Gebruikersnaam:"
 
 #, elixir-format
 #: lib/majorProject_web/templates/user/show.html.eex:2
+#: lib/majorProject_web/templates/user/user_profile_admin.html.eex:2
 msgid "Show User"
 msgstr "Profiel"
 
 #, elixir-format
-#: lib/majorProject_web/templates/user/edit.html.eex:2
-msgid "Edit User"
-msgstr "Wijzig gebruikersnaam"
-
-#, elixir-format
-#: lib/majorProject_web/templates/user/edit_password.html.eex:9
-#: lib/majorProject_web/templates/user/edit_username.html.eex:8 lib/majorProject_web/templates/user/form.html.eex:4
-#: lib/majorProject_web/templates/user/register.html.eex:8
+#: lib/majorProject_web/templates/user/edit.html.eex:8
+#: lib/majorProject_web/templates/user/edit_password.html.eex:9 lib/majorProject_web/templates/user/edit_username.html.eex:8
+#: lib/majorProject_web/templates/user/form.html.eex:4 lib/majorProject_web/templates/user/register.html.eex:8
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Oeps, er is iets misgegaan! Kijk aub. naar de errors onderaan"
 
@@ -139,6 +137,7 @@ msgid "Delete"
 msgstr "Verwijder"
 
 #, elixir-format
+#: lib/majorProject_web/templates/user/edit.html.eex:29
 #: lib/majorProject_web/templates/user/users.html.eex:23
 msgid "Edit"
 msgstr "Aanpassen"
@@ -150,7 +149,7 @@ msgstr "Mijn Profiel"
 
 #, elixir-format
 #: lib/majorProject_web/templates/user/register.html.eex:2
-#: lib/majorProject_web/templates/user/users.html.eex:30
+#: lib/majorProject_web/templates/user/users.html.eex:31
 msgid "Register a new user"
 msgstr "Registreer een nieuwe gebruiker"
 
@@ -176,6 +175,7 @@ msgstr "Api sleutels:"
 
 #, elixir-format
 #: lib/majorProject_web/templates/user/show.html.eex:35
+#: lib/majorProject_web/templates/user/users.html.eex:25
 msgid "Show"
 msgstr "Toon"
 
@@ -190,8 +190,8 @@ msgid "Change Username"
 msgstr "Verander gebruikersnaam"
 
 #, elixir-format
-#: lib/majorProject_web/templates/user/form.html.eex:16
-#: lib/majorProject_web/templates/user/register.html.eex:20
+#: lib/majorProject_web/templates/user/edit.html.eex:20
+#: lib/majorProject_web/templates/user/form.html.eex:16 lib/majorProject_web/templates/user/register.html.eex:20
 msgid "Confirm password"
 msgstr "Bevestig wachtwoord"
 
@@ -211,6 +211,7 @@ msgid "Register user"
 msgstr "Registreer een nieuwe gebruiker"
 
 #, elixir-format
+#: lib/majorProject_web/templates/user/edit.html.eex:24
 #: lib/majorProject_web/templates/user/register.html.eex:24
 msgid "Role"
 msgstr "Rol"
@@ -231,12 +232,12 @@ msgid "Verify password"
 msgstr "Verifiëer wachtwoord"
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:181
+#: lib/majorProject_web/controllers/user_controller.ex:192
 msgid "You can't delete other people's api keys."
 msgstr "Je kan andere gebruikers hun api sleutels niet verwijderen."
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:208
+#: lib/majorProject_web/controllers/user_controller.ex:219
 msgid "You can't see other people's api keys."
 msgstr "Je kan andere mensen hun api sleutel niet zien."
 
@@ -246,45 +247,70 @@ msgid "IP major project of Jonas De Boeck"
 msgstr "IP major project van Jonas De Boeck"
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:50
+#: lib/majorProject_web/controllers/user_controller.ex:55
 msgid "Old password doesn't match"
 msgstr "Het ingevulde wachtwoord komt niet overeen met het oud wachtwoord"
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:55
-#: lib/majorProject_web/controllers/user_controller.ex:56
+#: lib/majorProject_web/controllers/user_controller.ex:60
+#: lib/majorProject_web/controllers/user_controller.ex:61 lib/majorProject_web/controllers/user_controller.ex:168
 msgid "Passwords don't match"
 msgstr "Wachtwoorden komen niet overeen"
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:193
+#: lib/majorProject_web/controllers/user_controller.ex:204
 msgid "Key created successfully."
 msgstr "Sleutel succesvol aangemaakt"
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:177
+#: lib/majorProject_web/controllers/user_controller.ex:188
 msgid "Key deleted successfully."
 msgstr "Sleutel succesvol verwijdert"
 
-#, elixir-format, fuzzy
-#: lib/majorProject_web/controllers/user_controller.ex:106
-#: lib/majorProject_web/controllers/user_controller.ex:131
+#, elixir-format
+#: lib/majorProject_web/controllers/user_controller.ex:111
+#: lib/majorProject_web/controllers/user_controller.ex:136
 msgid "Passwords didn't match"
 msgstr "Wachtwoorden komen niet overeen"
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:96
-#: lib/majorProject_web/controllers/user_controller.ex:123
+#: lib/majorProject_web/controllers/user_controller.ex:101
+#: lib/majorProject_web/controllers/user_controller.ex:128
 msgid "User created successfully."
 msgstr "Gebruiker succesvol aangemaakt"
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:167
+#: lib/majorProject_web/controllers/user_controller.ex:178
 msgid "User deleted successfully."
 msgstr "Gebruiker succesvol verwijdert"
 
 #, elixir-format
-#: lib/majorProject_web/controllers/user_controller.ex:43
-#: lib/majorProject_web/controllers/user_controller.ex:74 lib/majorProject_web/controllers/user_controller.ex:154
+#: lib/majorProject_web/controllers/user_controller.ex:48
+#: lib/majorProject_web/controllers/user_controller.ex:79 lib/majorProject_web/controllers/user_controller.ex:160
 msgid "User updated successfully."
 msgstr "Gebruiker succesvol aangepast"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/edit.html.eex:2
+msgid "Edit user"
+msgstr "Wijzig gebruiker"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/user_profile_admin.html.eex:12
+msgid "Password:"
+msgstr "Wachtwoord:"
+
+#, elixir-format
+#: lib/majorProject_web/templates/user/user_profile_admin.html.eex:18
+msgid "Role:"
+msgstr "Rol:"
+
+#, elixir-format
+#: lib/majorProject_web/plugs/authorization_plug.ex:18
+msgid "Unauthorized access"
+msgstr "Toegang niet toegestaan"
+
+#, elixir-format
+#: lib/majorProject_web/controllers/session_controller.ex:32
+msgid "Welcome back!"
+msgstr "Welkom terug!"

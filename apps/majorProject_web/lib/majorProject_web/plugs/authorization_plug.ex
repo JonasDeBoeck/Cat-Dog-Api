@@ -1,4 +1,5 @@
 defmodule MajorProjectWeb.Plugs.AuthorizationPlug do
+    use MajorProjectWeb, :controller
     import Plug.Conn
     alias MajorProject.UserContext.User
     alias Phoenix.Controller
@@ -14,7 +15,7 @@ defmodule MajorProjectWeb.Plugs.AuthorizationPlug do
 
     def grant_access(conn, false) do
       conn
-      |> Controller.put_flash(:error, "Unauthorized access")
+      |> Controller.put_flash(:error, gettext("Unauthorized access"))
       |> Controller.redirect(to: "/")
       |> halt
     end
