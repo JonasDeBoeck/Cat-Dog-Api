@@ -126,7 +126,7 @@ defmodule MajorProjectWeb.UserController do
         {:ok, user} ->
           conn
           |> put_flash(:info, gettext("User created successfully."))
-          |> redirect(to: Routes.session_path(conn, :login))
+          |> redirect(to: Routes.session_path(conn, :new))
 
         {:error, %Ecto.Changeset{} = changeset} ->
           render(conn, "new.html", changeset: changeset)
